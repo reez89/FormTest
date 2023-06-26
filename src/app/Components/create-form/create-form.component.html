@@ -1,0 +1,156 @@
+<h1>CREA TIPO DI DOCUMENTO</h1>
+<form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+  <!-- Sezione Titolo Tipo Documento -->
+  <section class="main-section w-full flex flex-col">
+    <div class="title bg-blue-950 flex items-center px-4">
+      <h3 class="text-white">TITOLO TIPO DOCUMENTO</h3>
+    </div>
+    <section class="title-form-container">
+      <section class="title-field bg-white flex items-center justify-between">
+        <table class="w-full">
+          <thead class="table-head">
+          <tr>
+            <th class="text-left pl-4">TITOLO</th>
+            <th></th>
+            <th class="text-center">AZIONI</th>
+          </tr>
+          </thead>
+          <tbody class="table-head">
+          <tr>
+            <td class="text-left pl-4">
+              <input formControlName="title" placeholder="Inserisci nome del documento" type="text">
+            </td>
+            <td></td>
+            <td class="text-center">
+              <button class="btn-orange-border" mat-raised-button type="submit">
+                <mat-icon class="btn-orange">
+                  check
+                </mat-icon>
+              </button>
+              <button class="btn-orange-border ml-2" mat-raised-button>
+                <mat-icon class="btn-orange">
+                  close
+                </mat-icon>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+    <!-- Sezione Gestione Campi -->
+    <div class="title bg-blue-950 flex items-center px-4">
+      <h3 class="text-white">GESTIONE CAMPI</h3>
+    </div>
+    <section class="bg-gray-100">
+      <section class="title-form-container-bottom flex items-start bg-gray-100 justify-between">
+        <ng-container *ngIf="(documentType$ | async); else emptyForm">
+          <table class="w-full bg-gray-100" >
+            <thead class="table-head bg-white">
+            <tr>
+              <th class="text-left pl-4">TITOLO</th>
+              <th class="text-left">TIPOLOGIA</th>
+              <th class="text-left">OBBLIGATORIO(*)</th>
+              <th>AZIONI</th>
+            </tr>
+            </thead>
+            <tbody class="bg-gray-100"  formArrayName="fields">
+            <ng-container *ngFor="let fields of (documentType$ | async)?.fields; let i = index">
+              <tr [formGroupName]="i">
+                <td class="text-left pl-4">
+                  <input formControlName="name" placeholder="Inserisci nome del documento" type="text"/>
+                </td>
+                <td>
+                  <mat-select formControlName="type">
+                    <mat-option value="string">Stringa</mat-option>
+                    <mat-option value="numeric">Numerico</mat-option>
+                    <mat-option value="data">Data</mat-option>
+                  </mat-select>
+                </td>
+                <td>
+                  <mat-checkbox formControlName="required"></mat-checkbox>
+                </td>
+                <td class="text-center">
+                  <button class="btn-orange-border" mat-raised-button>
+                    <mat-icon class="btn-orange">check</mat-icon>
+                  </button>
+                  <button class="btn-orange-border ml-2" mat-raised-button>
+                    <mat-icon class="btn-orange">close</mat-icon>
+                  </button>
+                  <button (click)="deleteRow(i)" class="btn-orange-border ml-2" mat-raised-button>
+                    <mat-icon class="btn-orange">delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+            <tr>
+              <td class="text-left pl-4 pt-2 pb-2">
+                <button (click)="addField()" color="accent" class="btn-orange-border btn-white" mat-raised-button>
+                  <mat-icon class="btn-white">add</mat-icon>
+                  Aggiungi
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-container>
+        <ng-template #emptyForm>
+          <table class="w-full bg-gray-100" >
+            <thead class="table-head bg-white">
+            <tr>
+              <th class="text-left pl-4">TITOLO</th>
+              <th class="text-left">TIPOLOGIA</th>
+              <th class="text-left">OBBLIGATORIO(*)</th>
+              <th>AZIONI</th>
+            </tr>
+            </thead>
+            <tbody class="bg-gray-100" formArrayName="fields">
+              <tr >
+                <td class="text-left pl-4">
+                  <input formControlName="name" placeholder="Inserisci nome del documento" type="text"/>
+                </td>
+                <td>
+                  <mat-select formControlName="type" placeholder="Scegli tipologia">
+                    <mat-option *ngFor="let type of inputTypes" [value]="type">{{type}}</mat-option>
+                  </mat-select>
+                </td>
+                <td>
+                  <mat-checkbox formControlName="required"></mat-checkbox>
+                </td>
+                <td class="text-center">
+                  <button class="btn-orange-border" mat-raised-button>
+                    <mat-icon class="btn-orange">check</mat-icon>
+                  </button>
+                  <button class="btn-orange-border ml-2" mat-raised-button>
+                    <mat-icon class="btn-orange">close</mat-icon>
+                  </button>
+                  <button  class="btn-orange-border ml-2" mat-raised-button>
+                    <mat-icon class="btn-orange">delete</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            <tr>
+              <td class="text-left pl-4 pt-2">
+                <button (click)="addField()" color="accent" class="btn-orange-border btn-white" mat-raised-button>
+                  <mat-icon class="btn-white">add</mat-icon>
+                  Aggiungi
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </section>
+    </section>
+    <div class="bottom-btn-container bg-white flex items-center pl-4">
+      <button type="submit" class="btn-white" color="accent" mat-raised-button>
+        <mat-icon class="btn-white">save</mat-icon>
+        SALVA
+      </button>
+      <button class="btn-orange-border btn-orange m-4" mat-raised-button>
+        <mat-icon class="btn-orange ">close</mat-icon>
+        ANNULLA
+      </button>
+    </div>
+  </section>
+</form>

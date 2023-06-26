@@ -1,0 +1,67 @@
+.main-section{
+  border: 2px solid darkgray;
+}
+
+.title{
+  height: 60px;
+}
+
+.title h3,p{
+  margin: 0 !important;
+}
+
+.title-field{
+  height: 120px;
+  border-bottom: 2px solid darkgray;
+}
+
+.table-head{
+  height: 60px;
+  border-bottom: 2px solid darkgray;
+}
+
+.text-left input{
+  width: 350px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.btn-white{
+  color: white;
+  margin: 0 !important;
+  font-weight: bold;
+}
+
+.btn-orange-border{
+  border: 1px solid orange !important;
+}
+
+.btn-orange{
+  color: orange !important;
+  margin: 0 !important;
+  font-weight: bold;
+}
+
+.btn-white{
+  color: white !important;
+  margin: 0 !important;
+  font-weight: bold;
+}
+
+.bottom-btn-container{
+  height: 60px;
+}
+
+.add-field-btn-container{
+  height: 60px;
+}
+
+.title-form-container-bottom{
+  min-height: 200px;
+  border-bottom: 1px solid darkgray;
+}
+
+.m-4{
+  margin-left: 4px !important ;
+}

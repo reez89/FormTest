@@ -1,0 +1,54 @@
+{
+  "document-types": [
+    {
+      "id": "1",
+      "title": "Documento 2",
+      "fields": [
+        {
+          "id": 1,
+          "name": "Campo 1",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Campo 2",
+          "type": "numeric",
+          "required": true
+        },
+        {
+          "name": "Campo 3",
+          "type": "numeric",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Documento 2",
+      "fields": [
+        {
+          "id": 1,
+          "name": "Campo 1",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "Campo 2",
+          "type": "numeric",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Documento 3",
+      "fields": [
+        {
+          "name": "Campo 1",
+          "type": 5,
+          "required": true
+        }
+      ]
+    }
+  ]
+}
